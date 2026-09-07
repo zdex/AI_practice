@@ -1,14 +1,19 @@
 import streamlit as st
 import requests
 import json
+import time
 import subprocess
 import sys
-import time
 
 if __name__ == "__main__" and not st.runtime.exists():
     raise SystemExit(
         subprocess.call([sys.executable, "-m", "streamlit", "run", __file__])
     )
+
+# To avoid above 5 statements and subprocess call, you can run the script directly using the command
+# line: using `streamlit run demo5_chatbot_ui.py` in the terminal.
+# and for this you have firt activate your virtual environment using 
+# venv\Scripts\activate  
 
 # ── APP CONFIG ────────────────────────────────────────────────────
 st.set_page_config(
