@@ -27,13 +27,13 @@ print("=" * 60)
 
 print("  DEMO 1 — Your First LLM API Call")
 ###
-print("  Model: LLaMA 3.3 70B (Meta's open-source model, hosted on Groq)")
+print("  Model: qwen/qwen3.8-27b, allam-2-7b (qwen and Meta's open-source model, hosted on Groq)")
 print("=" * 60)
 print()
 
 try:
     response = client.chat.completions.create(
-        model="qwen/qwen3.8-27b",   # Meta's LLaMA 3.3 — open source!
+        model="qwen/qwen3.8-27b",   # Meta's LLaMA 3.3 — open source! # allam-2-7b
         messages=[
             {
                 "role": "system",           # System message = instructions to the AI
