@@ -5,8 +5,6 @@ import subprocess
 import sys
 import time
 
-# Session state belongs to a Streamlit script runtime. When this file is started
-# directly, relaunch it through Streamlit so the UI gets a persistent session.
 if __name__ == "__main__" and not st.runtime.exists():
     raise SystemExit(
         subprocess.call([sys.executable, "-m", "streamlit", "run", __file__])
