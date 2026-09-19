@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv  # Load environment variables from .env file
-from ollama import generate
+
 
 load_dotenv()
 # Ollama local endpoint (default) and model (default to gemma4)
