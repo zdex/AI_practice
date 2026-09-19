@@ -112,7 +112,10 @@ with st.sidebar:
         st.rerun()
 
     if "messages" in st.session_state:
-        st.metric("Messages in memory", len(st.session_state.messages))
+        st.metric("Number of Messages in memory", len(st.session_state.messages))
+    if st.session_state.get("messages"):    
+        st.caption("here is session history: \n" + str(st.session_state.messages))
+        
 
 # ── MAIN CHAT INTERFACE ───────────────────────────────────────────
 st.title("🤖 Local AI Chatbot")
