@@ -15,19 +15,19 @@ st.write("Describe your IT problem you are facing and AI will assit you to solve
 
 # chat history - memory
 if "messages" not in st.session_state:
-    st.session_state.messages=[]
+    st.session_state.messages = []
 
 #display previous conversation
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-user_input=st.text_input(
-    "Describe your IT issue: "
+user_input = st.chat_input(
+    "Describe your IT issue:"
 )
 
-if st.button("Ask"):
-    if not user_input:
+if user_input is not None:
+    if not user_input.strip():
         st.warning("Please write your IT problem first for me to help you")
     else:
         with st.chat_message("user"):
@@ -38,16 +38,11 @@ if st.button("Ask"):
         )
 
         #build conversation
-        conversation_history=""
-
+        conversation_history = ""
         for message in st.session_state.messages:
-            conversation_history+=(
-                f"{message['role']}: {message['content']}\n"
-            )
+            conversation_history += f"{message['role']}: {message['content']}\n"
 
-
-
-        prompt=f"""
+        prompt = f"""
         you are a helpful IT helpdesk assistant
         you help the user with simple, practical, and concise answer to the IT Problem the user is facing.
         If the issue is not IT related politely apologies and explain that you only help with IT issues
@@ -56,13 +51,13 @@ if st.button("Ask"):
 
         if the User issue: {user_input} is IT related you guide with resolution. 
         Rules:
-        -Give simple practical answer
-        -remember the previous messages in this session before responsding.
-        -avoid asking same infromation again.       
+        - Give simple practical answer
+        - remember the previous messages in this session before responding.
+        - avoid asking same information again.       
         """
 
         try:
-            response=llm.invoke(prompt)
+            response = llm.invoke(prompt)
             ai_response = response.content if isinstance(response.content, str) else ""
 
             st.subheader("Helpdesk Response:")
